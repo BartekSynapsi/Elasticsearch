@@ -50,7 +50,15 @@ services:
       - 5601:5601
     depends_on:
       - elasticsearch
-
+  nginx_dev:
+    build: .
+    ports:
+      - 80:80
+    volumes:
+      - ./frontend/:/usr/frontend/
+    depends_on:
+      - frontend 
+    
 volumes:
   elasticsearch-data:
     driver: local
